@@ -1,0 +1,2 @@
+algorithm: Random Forest
+train_size: 0.8
