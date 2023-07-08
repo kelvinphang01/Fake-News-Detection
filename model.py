@@ -1,9 +1,9 @@
 # Import necessary libraries
 import yaml
+import joblib
 import os
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, cross_val_score, cross_val_predict, GridSearchCV
@@ -17,8 +17,30 @@ from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import f1_score, make_scorer, classification_report
 from sklearn.model_selection import StratifiedKFold
-from sklearn.inspection import plot_partial_dependence
-from pdpbox import pdp
+
+def main():
+    # Read the config file
+    with open('config.yaml', 'r') as file:
+        config = yaml.safe_load(file)
+
+    # Extract algorithm and train_size from config
+    algorithm = config.get('algorithm')
+    train_size = config.get('train_size')
+
+    # Determine the best_model_select
+    if algorithm:
+        if train_size:
+            best_model_select = (algorithm, 'Train/Test Split', train_size)
+        else:
+            best_model_select = (algorithm, 'K-Fold Cross Validation')
+    else:
+        best_model_select = modelling()
+        
+    # Train the model
+    best_model = train(best_model_select, 'A+B+C')
+    
+    # Save the trained model
+    joblib.dump(best_model, "model.pkl")
 
 def load_dataset(feature_set):
     # Load dataset
@@ -204,22 +226,6 @@ class Model:
 
         print(feature_importances)
 
-# Read the config file
-with open('config.yaml', 'r') as file:
-    config = yaml.safe_load(file)
-
-# Extract algorithm and train_size from config
-algorithm = config.get('algorithm')
-train_size = config.get('train_size')
-
-# Determine the best_model_select
-if algorithm:
-    if train_size:
-        best_model_select = (algorithm, 'Train/Test Split', train_size)
-    else:
-        best_model_select = (algorithm, 'K-Fold Cross Validation')
-else:
-    best_model_select = modelling()
-    
-# Train the model
-best_model = train(best_model_select, 'A+B+C')
+# Call main function
+if __name__ == "__main__":
+    main()
