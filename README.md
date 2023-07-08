@@ -9,6 +9,8 @@ For this project, `./code/config.json` is configured to download the required fi
 
 Then, `data_extract.py` is used to extract and clean the data to be used for this project. The output is `final_dataset.csv`.
 
-The config file `config.yaml` defines the best model chosen after experimentation and model selection, and will be used to train the final model.
+The config file `config.yaml` defines the best model chosen after experimentation and model selection (in this case, Random Forest with 80% train size), and will be used to train the final model by running `model.py`.
 
 To train the model from the beginning, which includes the step of model selection, remove the values of `algorithm` and `train_size` from the `config.yaml` file, then run `model.py`.
+
+Finally, the model will be output as `model.pkl`.
