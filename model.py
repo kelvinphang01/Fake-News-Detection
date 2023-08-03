@@ -93,10 +93,6 @@ def train(best_model_select, feature_set):
     model.feature_importances(best_model, X)
     
     return best_model
-    
-def predict(X, y):
-    y_pred = best_model.predict(X)
-    print(classification_report(y, y_pred, digits=4))    
 
     
 class Model:
