@@ -44,7 +44,7 @@ def main():
 
 def load_dataset(feature_set):
     # Load dataset
-    df = pd.read_csv(os.path.join(os.getcwd(), "final_dataset.csv"))
+    df = pd.read_csv("data/final_dataset.csv")
     
     # Replace missing values with 0
     df = df.fillna(0)

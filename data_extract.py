@@ -5,8 +5,8 @@ import json as js
 
 # Main function to extract final dataset
 def main():
-    root_dir = "./code/fakenewsnet_dataset"
-    output_path = "./final_dataset.csv"
+    root_dir = "FakeNewsNet/code/fakenewsnet_dataset"
+    output_path = "data/final_dataset.csv"
     
     extractor = Extractor(root_dir)
     
@@ -55,10 +55,10 @@ class Extractor:
     # Load and merge news datasets
     def load_news(self):    
         file_paths = [
-            "./dataset/politifact_fake.csv",
-            "./dataset/politifact_real.csv",
-            "./dataset/gossipcop_fake.csv",
-            "./dataset/gossipcop_real.csv"
+            "FakeNewsNet/dataset/politifact_fake.csv",
+            "FakeNewsNet/dataset/politifact_real.csv",
+            "FakeNewsNet/dataset/gossipcop_fake.csv",
+            "FakeNewsNet/dataset/gossipcop_real.csv"
         ]
         
         news_df = pd.concat([pd.read_csv(file_path) for file_path in file_paths])
