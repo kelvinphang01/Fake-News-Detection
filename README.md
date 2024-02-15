@@ -2,6 +2,8 @@
 My capstone project for BSDA degree programme at Sunway University:
 
 <u>**Fake News Detection Using Social Media User Network and Engagement Features**</u>
+
+[Link to publication](https://ieeexplore.ieee.org/abstract/document/10295146/)
 ***
 For this project, `FakeNewsNet/code/config.json` is configured to download the required files only. Credit of data retrieval scripts and dataset goes to [KaiDMML/FakeNewsNet](https://github.com/KaiDMML/FakeNewsNet).
 
